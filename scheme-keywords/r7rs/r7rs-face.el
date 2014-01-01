@@ -1,0 +1,40 @@
+;; faces
+
+(cl-defmacro r7rs:make-face (face fore)
+  `(progn
+     (make-face ,face)
+     (set-face-foreground ,face  ,fore)))
+
+
+(cl-defun r7rs:add-faces ()
+  (cl-dolist (p '((r7rs:face-syntax "#F92672")
+                  (r7rs:face-function "#66D9EF")
+                  (r7rs:face-string "#f24f47")
+                  (r7rs:face-character "#fee1a2")
+                  (r7rs:face-number "#b5ae5b")
+                  (r7rs:face-boolean "#ffbe5c")
+                  (r7rs:face-delimiter "#ababab")
+                  (r7rs:face-constant "#e9c3b9")
+                  (r7rs:face-comment "#ababab")
+                  (r7rs:face-multicomment "#ababab")
+                  (r7rs:face-error "#ababab")
+                  (r7rs:face-library-name "#e95a9e")
+                  (r7rs:face-module-macro "#9399ab")
+                  (r7rs:face-module-syntax "#93c9ab")
+                  (r7rs:face-module-function "#3b5993")
+                  (r7rs:face-module-procedure "#3b9993")
+                  (r7rs:face-module-method "#c3b9a9")
+                  (r7rs:face-module-charset "#9bc993")
+                  (r7rs:face-module-class "#ebc893")
+                  (r7rs:face-module-parameter "#e999b3")
+                  (r7rs:face-module-name "#6a93cc")
+                  (r7rs:face-regexp "#7ea978")
+                  (r7rs:face-srfi62-comment "#ababab")
+                  (r7rs:face-sharpbang "#ababab")
+                  (r7rs:face-include "#ababab")
+                  (r7rs:face-interpolation "#ababab")))
+    (message "making face %s" p)
+    (r7rs:make-face (car p) (cadr p))))
+
+
+(provide 'r7rs-face)
