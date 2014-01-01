@@ -1,6 +1,8 @@
 
+(require 'scheme-keywords-util "scheme-keywords/util")
+
 (cl-defun srfi:add-srfi-13 ()
-  (srfi:add-keywords
+  (scheme-keywords:add-keywords
    'font-lock-builtin-face
    '((1 . list->string)
      (1 . string-append)

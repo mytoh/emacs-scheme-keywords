@@ -1,8 +1,16 @@
 ;;; scheme-keywords.el -*- lexical-binding: t -*-
 
+(require 'scheme-keywords-r7rs "scheme-keywords/r7rs/r7rs")
+(require 'scheme-keywords-srfi "scheme-keywords/srfi/srfi")
 
-(require 'r7rs "scheme-keywords/r7rs/r7rs")
-(require 'srfi "scheme-keywords/srfi/srfi")
+;;;###autoload
+(define-minor-mode scheme-keywords-mode
+  :init-value nil
+  :lighter " scheme-keywords"
+  :group 'languages
+  (when scheme-keywords-mode
+    (srfi:mode-start)
+    (r7rs:mode-start)))
 
 (provide 'scheme-keywords)
 

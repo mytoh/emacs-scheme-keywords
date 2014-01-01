@@ -1,7 +1,10 @@
 
+(require 'scheme-keywords-util "scheme-keywords/util")
+(require 'scheme-keywords-face "scheme-keywords/face")
+
 (cl-defun r7rs:add-lazy ()
-  (r7rs:add-keywords
-   'r7rs:face-function
+  (scheme-keywords:add-keywords
+   'scheme-keywords:face-r7rs-function
    '((1 . delay)
      (1 . force)
      (1 . promise?)

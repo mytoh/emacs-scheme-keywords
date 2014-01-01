@@ -1,10 +1,12 @@
 
 ;; r7rs base
 
-(cl-defun r7rs:add-base ()
+(require 'scheme-keywords-util "scheme-keywords/util")
+(require 'scheme-keywords-face "scheme-keywords/face")
 
-  (r7rs:add-keywords
-   'r7rs:face-syntax
+(cl-defun r7rs:add-base ()
+  (scheme-keywords:add-keywords
+   'scheme-keywords:face-r7rs-syntax
    '((1 . define)
      (1 . define-record-type)
      (1 . define-syntax)
@@ -24,12 +26,10 @@
      (1 . unless)
      (1 . do)
      (1 . guard)
-     (0 . begin)
-     ))
+     (0 . begin)))
 
-
-  (r7rs:add-keywords
-   'r7rs:face-function
+  (scheme-keywords:add-keywords
+   'scheme-keywords:face-r7rs-function
    '((1 . *)
      (1 . +)
      (1 . ...)
@@ -251,7 +251,5 @@
      (1 . write-string)
      (1 . zero?)
      )))
-
-
 
 (provide 'r7rs-base)

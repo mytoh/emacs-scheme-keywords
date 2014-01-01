@@ -2,24 +2,7 @@
 (eval-when-compile
   (require 'cl-lib))
 
-
-(cl-defun r7rs:add-keywords (face-name keyword-rules)
-  (let* ((keyword-list (mapcar #'(lambda (x)
-                                   (symbol-name (cdr x)))
-                               keyword-rules))
-         (keyword-regexp (concat "(\\("
-                                 (regexp-opt keyword-list)
-                                 "\\)[) \n]")))
-    (my-log "adding keywords for face "
-            (propertize (symbol-name face-name) 'face 'font-lock-variable-name-face)
-            " on scheme mode")
-    (font-lock-add-keywords 'scheme-mode
-                            `((,keyword-regexp 1 ',face-name))))
-  (mapc #'(lambda (x)
-            (put (cdr x)
-                 'scheme-indent-function
-                 (car x)))
-        keyword-rules))
+(require 'scheme-keywords-face "scheme-keywords/face")
 
 (font-lock-add-keywords 'scheme-mode
                         `(
@@ -34,18 +17,18 @@
 
                           ;; ,@
                           (,(rx ",@")
-                           0 'r7rs:face-string)
+                           0 'scheme-keywords:face-r7rs-string)
                           ;; #`
                           (,(rx (submatch "#`\"")
                                 (submatch (one-or-more any))
                                 (submatch  "\""))
-                           (1 'r7rs:face-regexp)
-                           (2 'r7rs:face-regexp)
-                           (3 'r7rs:face-regexp)
+                           (1 'scheme-keywords:face-r7rs-regexp)
+                           (2 'scheme-keywords:face-r7rs-regexp)
+                           (3 'scheme-keywords:face-r7rs-regexp)
                            )
                           ;; #t #f
                           (,(rx (or  "#t" "#f"))
-                           0 'r7rs:face-boolean)
+                           0 'scheme-keywords:face-r7rs-boolean)
 
                           ;; *some-variable*
                           (,(rx "*"
@@ -53,19 +36,19 @@
                                  (one-or-more
                                   any))
                                 "*")
-                           0 'r7rs:face-constant)
+                           0 'scheme-keywords:face-r7rs-constant)
 
                           ;; keyword symbol
                           (,(rx (one-or-more (not (syntax word)))
                                 ":" (one-or-more (or (syntax word)
                                                      (syntax symbol))))
-                           0 'r7rs:face-constant)
+                           0 'scheme-keywords:face-r7rs-constant)
 
                           ;; symbol
                           (,(rx (one-or-more (not (syntax word)))
                                 "'" (one-or-more (or (syntax word)
                                                      (syntax symbol))))
-                           0 'r7rs:face-string)
+                           0 'scheme-keywords:face-r7rs-string)
 
                           ;; library name
                           (,(rx (syntax open-parenthesis) (or "library" "define-library")
@@ -74,12 +57,12 @@
                                 (submatch (one-or-more (or (syntax word)
                                                            (syntax symbol)
                                                            (in " \t\n")))))
-                           0 'r7rs:face-library-name)
+                           0 'scheme-keywords:face-r7rs-library-name)
 
                           ;; character literal #\x
                           (,(rx "#" "\\" (one-or-more (or (syntax word)
                                                           (syntax symbol))))
-                           0 'r7rs:face-character)
+                           0 'scheme-keywords:face-r7rs-character)
 
                           ;; named let
                           (,(rx (syntax open-parenthesis) "let"
@@ -88,18 +71,14 @@
                                                            (syntax symbol))))
                                 (* space)
                                 (syntax open-parenthesis))
-                           1 'r7rs:face-constant)
-                          ))
+                           1 'scheme-keywords:face-r7rs-constant)))
 
-
+(require 'r7rs-process-context "scheme-keywords/r7rs/r7rs-process-context")
 (require 'r7rs-fundamental "scheme-keywords/r7rs/r7rs-fundamental")
-
 (require 'r7rs-base "scheme-keywords/r7rs/r7rs-base")
 (require 'r7rs-char "scheme-keywords/r7rs/r7rs-char")
 (require 'r7rs-cxr "scheme-keywords/r7rs/r7rs-cxr")
 (require 'r7rs-file "scheme-keywords/r7rs/r7rs-file")
-(require 'r7rs-face "scheme-keywords/r7rs/r7rs-face")
-(require 'r7rs-process-context "scheme-keywords/r7rs/r7rs-process-context")
 (require 'r7rs-eval "scheme-keywords/r7rs/r7rs-eval")
 (require 'r7rs-lazy "scheme-keywords/r7rs/r7rs-lazy")
 (require 'r7rs-load "scheme-keywords/r7rs/r7rs-load")
@@ -113,7 +92,6 @@
 
 
 (cl-defun r7rs:mode-start ()
-  (r7rs:add-faces)
   (r7rs:add-fundamental)
   (r7rs:add-base)
   (r7rs:add-char)
@@ -130,12 +108,4 @@
   (r7rs:add-inexact)
   (r7rs:add-complex))
 
-;;;###autoload
-(define-minor-mode r7rs-mode
-  :init-value nil
-  :lighter " r7rs"
-  :group 'languages
-  (if r7rs-mode
-      (r7rs:mode-start)))
-
-(provide 'r7rs)
+(provide 'scheme-keywords-r7rs)

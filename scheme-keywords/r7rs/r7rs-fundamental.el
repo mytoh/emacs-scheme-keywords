@@ -1,9 +1,11 @@
  ;;; -*- coding: utf-8 -*-
 
+(require 'scheme-keywords-util "scheme-keywords/util")
+(require 'scheme-keywords-face "scheme-keywords/face")
 
 (cl-defun r7rs:add-fundamental ()
-  (r7rs:add-keywords
-   'r7rs:face-syntax
+  (scheme-keywords:add-keywords
+   'scheme-keywords:face-r7rs-syntax
    '((2 . library)
      (2 . define-library)
      (0 . export)

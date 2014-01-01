@@ -1,8 +1,10 @@
 
+(require 'scheme-keywords-util "scheme-keywords/util")
+(require 'scheme-keywords-face "scheme-keywords/face")
 
 (cl-defun r7rs:add-cxr ()
-  (r7rs:add-keywords
-   'r7rs:face-function
+  (scheme-keywords:add-keywords
+   'scheme-keywords:face-r7rs-function
    '((1 . caaar)
      (1 . caadr)
      (1 . cadar)
