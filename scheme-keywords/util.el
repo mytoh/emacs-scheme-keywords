@@ -14,7 +14,7 @@
                                keyword-rules))
          (keyword-regexp (concat "(\\("
                                  (regexp-opt keyword-list)
-                                 "\\)[) \n]")))
+                                 "\\)\\>")))
     (scheme-keywords:log "adding keywords for face "
                          (propertize (symbol-name face-name) 'face 'font-lock-variable-name-face)
                          " on scheme mode")
