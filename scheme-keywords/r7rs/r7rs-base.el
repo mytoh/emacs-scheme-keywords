@@ -11,7 +11,6 @@
      (1 . define-record-type)
      (1 . define-syntax)
      (1 . define-values)
-     (1 . define-library)
      (1 . lambda)
      (1 . set!)
      (1 . let*)
