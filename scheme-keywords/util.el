@@ -9,8 +9,8 @@
                       ,@messages) " ...")))
 
 (cl-defun scheme-keywords:add-keywords (face-name keyword-rules)
-  (let* ((keyword-list (mapcar #'(lambda (x)
-                                   (symbol-name (cdr x)))
+  (let* ((keyword-list (mapcar (lambda (x)
+                                 (symbol-name (cdr x)))
                                keyword-rules))
          (keyword-regexp (concat "(\\("
                                  (regexp-opt keyword-list)
@@ -20,10 +20,10 @@
                          " on scheme mode")
     (font-lock-add-keywords 'scheme-mode
                             `((,keyword-regexp 1 ',face-name))))
-  (mapc #'(lambda (x)
-            (put (cdr x)
-                 'scheme-indent-function
-                 (car x)))
+  (mapc (lambda (x)
+          (put (cdr x)
+               'scheme-indent-function
+               (car x)))
         keyword-rules))
 
 (provide 'scheme-keywords-util)
