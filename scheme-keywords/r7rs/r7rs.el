@@ -27,7 +27,7 @@
                            (3 'scheme-keywords:face-r7rs-regexp)
                            )
                           ;; #t #f
-                          (,(rx (or  "#t" "#f"))
+                          (,(rx (or  "#t" "#f" "#true" "#false"))
                            0 'scheme-keywords:face-r7rs-boolean)
 
                           ;; *some-variable*
