@@ -6,7 +6,7 @@
 
 (cl-defun r7rs:add-process-context ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-syntax
+   'scheme-keywords:r7rs-syntax
    '((1 . command-line)
      (1 . emergency-exit)
      (1 . exit)

@@ -4,7 +4,7 @@
 
 (cl-defun srfi:add-srfi-8 ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-function
+   'scheme-keywords:r7rs-function
    '((1 . receive))))
 
 (provide 'srfi-8)

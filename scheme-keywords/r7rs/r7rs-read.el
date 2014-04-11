@@ -4,7 +4,7 @@
 
 (cl-defun r7rs:add-read ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-function
+   'scheme-keywords:r7rs-function
    '((1 . read))))
 
 (provide 'r7rs-read)

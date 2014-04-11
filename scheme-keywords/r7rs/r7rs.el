@@ -13,22 +13,22 @@
                                   (one-or-more (or (syntax word)
                                                    (syntax symbol)
                                                    (in " \t\n"))))))
-                           1  'font-lock-variable-name-face)
+                            1 'scheme-keywords:r7rs-export-symbol)
 
                           ;; ,@
                           (,(rx ",@")
-                           0 'scheme-keywords:face-r7rs-string)
+                            0 'scheme-keywords:r7rs-string)
                           ;; #`
                           (,(rx (submatch "#`\"")
                                 (submatch (one-or-more any))
                                 (submatch  "\""))
-                           (1 'scheme-keywords:face-r7rs-regexp)
-                           (2 'scheme-keywords:face-r7rs-regexp)
-                           (3 'scheme-keywords:face-r7rs-regexp)
-                           )
+                            (1 'scheme-keywords:r7rs-regexp)
+                            (2 'scheme-keywords:r7rs-regexp)
+                            (3 'scheme-keywords:r7rs-regexp)
+                            )
                           ;; #t #f
                           (,(rx (or  "#t" "#f" "#true" "#false"))
-                           0 'scheme-keywords:face-r7rs-boolean)
+                            0 'scheme-keywords:r7rs-boolean)
 
                           ;; *some-variable*
                           (,(rx "*"
@@ -36,19 +36,19 @@
                                  (one-or-more
                                   any))
                                 "*")
-                           0 'scheme-keywords:face-r7rs-constant)
+                            0 'scheme-keywords:r7rs-constant)
 
                           ;; keyword symbol
                           (,(rx (one-or-more (not (syntax word)))
                                 ":" (one-or-more (or (syntax word)
                                                      (syntax symbol))))
-                           0 'scheme-keywords:face-r7rs-constant)
+                            0 'scheme-keywords:r7rs-constant)
 
                           ;; symbol
                           (,(rx (one-or-more (not (syntax word)))
                                 "'" (one-or-more (or (syntax word)
                                                      (syntax symbol))))
-                           0 'scheme-keywords:face-r7rs-string)
+                            0 'scheme-keywords:r7rs-string)
 
                           ;; library name
                           (,(rx (syntax open-parenthesis) (or "library" "define-library")
@@ -57,12 +57,12 @@
                                 (submatch (one-or-more (or (syntax word)
                                                            (syntax symbol)
                                                            (in " \t\n")))))
-                           0 'scheme-keywords:face-r7rs-library-name)
+                            0 'scheme-keywords:r7rs-library-name)
 
                           ;; character literal #\x
                           (,(rx "#" "\\" (one-or-more (or (syntax word)
                                                           (syntax symbol))))
-                           0 'scheme-keywords:face-r7rs-character)
+                            0 'scheme-keywords:r7rs-character)
 
                           ;; named let
                           (,(rx (syntax open-parenthesis) "let"
@@ -71,7 +71,7 @@
                                                            (syntax symbol))))
                                 (* space)
                                 (syntax open-parenthesis))
-                           1 'scheme-keywords:face-r7rs-constant)))
+                            1 'scheme-keywords:r7rs-constant)))
 
 (require 'r7rs-process-context "scheme-keywords/r7rs/r7rs-process-context")
 (require 'r7rs-fundamental "scheme-keywords/r7rs/r7rs-fundamental")

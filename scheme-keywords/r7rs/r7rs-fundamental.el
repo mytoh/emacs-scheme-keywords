@@ -5,7 +5,7 @@
 
 (cl-defun r7rs:add-fundamental ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-syntax
+   'scheme-keywords:r7rs-syntax
    '((2 . library)
      (2 . define-library)
      (0 . export)

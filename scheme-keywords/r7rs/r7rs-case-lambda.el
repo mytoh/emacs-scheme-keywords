@@ -4,7 +4,7 @@
 
 (cl-defun r7rs:add-case-lambda ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-syntax
+   'scheme-keywords:r7rs-syntax
    '((1 . case-lambda))))
 
 (provide 'r7rs-case-lambda)

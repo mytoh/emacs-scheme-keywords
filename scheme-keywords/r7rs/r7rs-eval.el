@@ -4,7 +4,7 @@
 
 (cl-defun r7rs:add-eval ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-syntax
+   'scheme-keywords:r7rs-syntax
    '((1 . eval)
      (1 . environment))))
 

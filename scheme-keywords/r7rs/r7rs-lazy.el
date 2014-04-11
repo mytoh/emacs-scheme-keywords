@@ -4,7 +4,7 @@
 
 (cl-defun r7rs:add-lazy ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-function
+   'scheme-keywords:r7rs-function
    '((1 . delay)
      (1 . force)
      (1 . promise?)

@@ -6,7 +6,7 @@
 
 (cl-defun r7rs:add-base ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-syntax
+   'scheme-keywords:r7rs-syntax
    '((1 . define)
      (1 . define-record-type)
      (1 . define-syntax)
@@ -29,7 +29,7 @@
      (0 . begin)))
 
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-function
+   'scheme-keywords:r7rs-function
    '((1 . *)
      (1 . +)
      (1 . ...)

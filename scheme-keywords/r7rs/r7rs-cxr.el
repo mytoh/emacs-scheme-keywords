@@ -4,7 +4,7 @@
 
 (cl-defun r7rs:add-cxr ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-function
+   'scheme-keywords:r7rs-function
    '((1 . caaar)
      (1 . caadr)
      (1 . cadar)

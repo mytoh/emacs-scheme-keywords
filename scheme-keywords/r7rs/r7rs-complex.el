@@ -4,7 +4,7 @@
 
 (cl-defun r7rs:add-complex ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-function
+   'scheme-keywords:r7rs-function
    '((1 . angle)
      (1 . magnitude)
      (1 . make-rectangular)

@@ -4,7 +4,7 @@
 
 (cl-defun r7rs:add-file ()
   (scheme-keywords:add-keywords
-   'scheme-keywords:face-r7rs-function
+   'scheme-keywords:r7rs-function
    '((1 . call-with-input-file)
      (1 . call-with-output-file)
      (1 . delete-file)
