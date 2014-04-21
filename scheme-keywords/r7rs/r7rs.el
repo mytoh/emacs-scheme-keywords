@@ -4,68 +4,70 @@
 
 (require 'scheme-keywords-face "scheme-keywords/face")
 
+;; (export some-function)
 (font-lock-add-keywords 'scheme-mode
-                        `(
-                          ;; (export some-function)
-                          (,(rx (and
+                        `((,(rx (and
                                  (syntax open-parenthesis)"export" (one-or-more (in " \t\n"))
                                  (submatch
                                   (one-or-more (or (syntax word)
                                                    (syntax symbol)
                                                    (in " \t\n"))))))
-                            1 'scheme-keywords:r7rs-export-symbol)
+                            1 'scheme-keywords:r7rs-export-symbol)))
 
-                          ;; ,@
-                          (,(rx ",@")
-                            0 'scheme-keywords:r7rs-string)
-                          ;; #`
-                          (,(rx (submatch "#`\"")
+;; ,@
+(font-lock-add-keywords 'scheme-mode
+                        `((,(rx ",@")
+                            0 'scheme-keywords:r7rs-string)))
+;; #`
+(font-lock-add-keywords 'scheme-mode
+                        `((,(rx (submatch "#`\"")
                                 (submatch (one-or-more any))
                                 (submatch  "\""))
                             (1 'scheme-keywords:r7rs-regexp)
                             (2 'scheme-keywords:r7rs-regexp)
-                            (3 'scheme-keywords:r7rs-regexp)
-                            )
-                          ;; #t #f
-                          (,(rx (or  "#t" "#f" "#true" "#false"))
-                            0 'scheme-keywords:r7rs-boolean)
-
-                          ;; *some-variable*
-                          (,(rx "*"
+                            (3 'scheme-keywords:r7rs-regexp))))
+;; #t #f
+(font-lock-add-keywords 'scheme-mode
+                        `((,(rx (or  "#t" "#f" "#true" "#false"))
+                            0 'scheme-keywords:r7rs-boolean)))
+;; *some-variable*
+(font-lock-add-keywords 'scheme-mode
+                        `((,(rx "*"
                                 (submatch
                                  (one-or-more
-                                  any))
+                                  (or (syntax word)
+                                      (syntax symbol))))
                                 "*")
-                            0 'scheme-keywords:r7rs-constant)
-
-                          ;; keyword symbol
-                          (,(rx (one-or-more (not (syntax word)))
+                            0 'scheme-keywords:r7rs-constant)))
+;; keyword symbol
+(font-lock-add-keywords 'scheme-mode
+                        `((,(rx (one-or-more (not (syntax word)))
                                 ":" (one-or-more (or (syntax word)
                                                      (syntax symbol))))
-                            0 'scheme-keywords:r7rs-constant)
-
-                          ;; symbol
-                          (,(rx (one-or-more (not (syntax word)))
+                            0 'scheme-keywords:r7rs-constant)))
+;; symbol
+(font-lock-add-keywords 'scheme-mode
+                        `((,(rx (one-or-more (not (syntax word)))
                                 "'" (one-or-more (or (syntax word)
                                                      (syntax symbol))))
-                            0 'scheme-keywords:r7rs-string)
-
-                          ;; library name
-                          (,(rx (syntax open-parenthesis) (or "library" "define-library")
+                            0 'scheme-keywords:r7rs-string)))
+;; library name
+(font-lock-add-keywords 'scheme-mode
+                        `((,(rx (syntax open-parenthesis) (or "library" "define-library")
                                 (one-or-more (in " \t\n"))
                                 (syntax open-parenthesis)
                                 (submatch (one-or-more (or (syntax word)
                                                            (syntax symbol)
                                                            (in " \t\n")))))
-                            0 'scheme-keywords:r7rs-library-name)
-
-                          ;; character literal #\x
-                          (,(rx "#" "\\" (one-or-more (or (syntax word)
+                            0 'scheme-keywords:r7rs-library-name)))
+;; character literal #\x
+(font-lock-add-keywords 'scheme-mode
+                        `((,(rx "#" "\\" (one-or-more (or (syntax word)
                                                           (syntax symbol))))
-                            0 'scheme-keywords:r7rs-character)
-
-                          ;; named let
-                          (,(rx (syntax open-parenthesis) "let"
+                            0 'scheme-keywords:r7rs-character)))
+;; named let
+(font-lock-add-keywords 'scheme-mode
+                        `((,(rx (syntax open-parenthesis) "let"
                                 (one-or-more space)
                                 (submatch (one-or-more (or (syntax word)
                                                            (syntax symbol))))

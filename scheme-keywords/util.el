@@ -4,9 +4,9 @@
   (require 'cl-lib))
 
 (cl-defmacro scheme-keywords:log (&rest messages)
-  `(progn
-     (message (concat (propertize ">> " 'face 'font-lock-doc-face)
-                      ,@messages) " ...")))
+  `(cl-locally
+       (message (concat (propertize ">> " 'face 'font-lock-doc-face)
+                        ,@messages) " ...")))
 
 (cl-defun scheme-keywords:add-keywords (face-name keyword-rules)
   (let* ((keyword-list (mapcar (lambda (x)
