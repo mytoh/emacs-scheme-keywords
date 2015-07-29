@@ -26,7 +26,9 @@
      (1 . unless)
      (1 . do)
      (1 . guard)
-     (0 . begin)))
+     (0 . begin)
+     (0 . else)
+     ))
 
   (scheme-keywords:add-keywords
    'scheme-keywords:r7rs-function
@@ -37,7 +39,6 @@
      (1 . <)
      (1 . <=)
      (1 . =)
-     (1 . =>)
      (1 . >)
      (1 . >=)
      (1 . abs)
@@ -88,7 +89,6 @@
      (1 . denominator)
      (1 . dynamic-wind)
 
-     (0 . else)
      (1 . eof-object?)
      (1 . equal?)
      (1 . error)
