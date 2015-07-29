@@ -1,5 +1,7 @@
 ;; faces
 
+(require 'scheme-keywords-util "scheme-keywords/util")
+
 (cl-defun scheme-keywords:make-face (name fore)
   (make-face name)
   (set-face-foreground name fore))
@@ -35,8 +37,7 @@
                   (scheme-keywords:r7rs-include "#ababab")
                   (scheme-keywords:r7rs-interpolation "#ababab")
                   (scheme-keywords:r7rs-export-symbol "#c39bac")))
-    (unless scheme-keywords-inhibit-message
-      (message "making face %s" p))
+    (scheme-keywords:log "making face " (symbol-name (car p)))
     (scheme-keywords:make-face (car p) (cadr p))))
 
 (scheme-keywords:r7rs-add-faces)

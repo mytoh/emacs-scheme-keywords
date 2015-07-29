@@ -3,6 +3,10 @@
 (eval-when-compile
   (require 'cl-lib))
 
+(defcustom scheme-keywords-inhibit-message
+  nil
+  "silence messages if non-nil value.")
+
 (cl-defmacro scheme-keywords:log (&rest messages)
   `(cl-locally
        (unless scheme-keywords-inhibit-message

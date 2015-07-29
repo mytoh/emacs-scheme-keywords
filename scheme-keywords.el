@@ -3,10 +3,6 @@
 (require 'scheme-keywords-r7rs "scheme-keywords/r7rs/r7rs")
 (require 'scheme-keywords-srfi "scheme-keywords/srfi/srfi")
 
-(defcustom scheme-keywords-inhibit-message
-  nil
-  "silence messages if non-nil value.")
-
 ;;;###autoload
 (define-minor-mode scheme-keywords-mode
   :init-value nil
