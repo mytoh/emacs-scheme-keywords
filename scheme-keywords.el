@@ -3,7 +3,7 @@
 (require 'scheme-keywords-r7rs "scheme-keywords/r7rs/r7rs")
 (require 'scheme-keywords-srfi "scheme-keywords/srfi/srfi")
 
-(defvar scheme-keywords-inhibit-message
+(defcustom scheme-keywords-inhibit-message
   nil
   "silence messages if non-nil value.")
 

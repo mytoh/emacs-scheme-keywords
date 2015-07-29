@@ -35,7 +35,8 @@
                   (scheme-keywords:r7rs-include "#ababab")
                   (scheme-keywords:r7rs-interpolation "#ababab")
                   (scheme-keywords:r7rs-export-symbol "#c39bac")))
-    (scheme-keywords:log (message "making face %s" p))
+    (unless scheme-keywords-inhibit-message
+      (message "making face %s" p))
     (scheme-keywords:make-face (car p) (cadr p))))
 
 (scheme-keywords:r7rs-add-faces)
