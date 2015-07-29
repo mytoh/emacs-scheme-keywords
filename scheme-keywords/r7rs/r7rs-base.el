@@ -88,7 +88,7 @@
      (1 . denominator)
      (1 . dynamic-wind)
 
-     (1 . else)
+     (0 . else)
      (1 . eof-object?)
      (1 . equal?)
      (1 . error)
