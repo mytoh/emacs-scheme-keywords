@@ -27,7 +27,7 @@
      (1 . do)
      (1 . guard)
      (0 . begin)
-     (0 . else)
+     else
      ))
 
   (scheme-keywords:add-keywords

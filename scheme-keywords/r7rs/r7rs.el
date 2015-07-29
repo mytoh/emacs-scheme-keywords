@@ -83,7 +83,6 @@
                                 (one-or-more (in " \t\n"))
                                 (syntax open-parenthesis))
                             1 'scheme-keywords:r7rs-syntax)))
-(put '=> 'scheme-indent-function 1)
 
 (require 'r7rs-process-context "scheme-keywords/r7rs/r7rs-process-context")
 (require 'r7rs-fundamental "scheme-keywords/r7rs/r7rs-fundamental")
