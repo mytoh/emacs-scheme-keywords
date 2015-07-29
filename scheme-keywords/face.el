@@ -5,7 +5,7 @@
   (set-face-foreground name fore))
 
 (defface scheme-keywords:r7rs-syntax
-    '((t :inherit font-lock-builtin-face))
+  '((t :inherit font-lock-builtin-face))
   "face for r7rs syntax")
 
 (cl-defun scheme-keywords:r7rs-add-faces ()
@@ -35,7 +35,7 @@
                   (scheme-keywords:r7rs-include "#ababab")
                   (scheme-keywords:r7rs-interpolation "#ababab")
                   (scheme-keywords:r7rs-export-symbol "#c39bac")))
-    (message "making face %s" p)
+    (scheme-keywords:log (message "making face %s" p))
     (scheme-keywords:make-face (car p) (cadr p))))
 
 (scheme-keywords:r7rs-add-faces)
